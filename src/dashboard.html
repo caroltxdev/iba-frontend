@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard - ĨBÁ</title>
+</head>
+<body>
+    <!-- Bandeira FORA do container -->
+    <img src="img/974904a629ce4fb7ad1d52126a4b5ae9-removebg-preview.png" alt="#" class="brasil-background">
+    
+    <!-- Header FORA do container -->
+    <header id="topo">
+        <div id="logo-area">
+            <img id="logotipo-iba" src="img/Ĩbá.png" alt="logotipo-iba">
+        </div>
+
+        <div class="right-area">
+            <button class="menu-toggle" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+                ☰
+            </button>
+        </div>
+
+        <nav>
+            <div class="nav-links" id="menu">
+                <a href="registrar.html">Registrar</a>
+                <a href="consultar.html">Consultar</a>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main sem flex centralizado -->
+    <main>
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p class="subtitle">Visão geral e análise das ocorrências registradas</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filtros-dashboard">
+                <div class="filtro-item">
+                    <label for="startDate">Data Inicial</label>
+                    <input type="date" id="startDate">
+                </div>
+
+                <div class="filtro-item">
+                    <label for="endDate">Data Final</label>
+                    <input type="date" id="endDate">
+                </div>
+
+                <div class="filtro-item">
+                    <label for="typeFilter">Tipo de Ocorrência</label>
+                    <select id="typeFilter">
+                        <option value="">Todos os tipos</option>
+                        <option value="QUEIMADA">QUEIMADA</option>
+                        <option value="DESMATAMENTO">DESMATAMENTO</option>
+                        <option value="POLUICAO">POLUIÇÃO</option>
+                        <option value="GARIMPO">GARIMPO</option>
+                        <option value="INVASAO">INVASÃO</option>
+                        <option value="OUTROS">OUTROS</option>
+                    </select>
+                </div>
+
+                <button id="applyFiltersBtn" class="btn-aplicar-dashboard">Aplicar Filtros</button>
+            </div>
+
+            <!-- Cards de Estatísticas -->
+            <div class="cards-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>Total de Ocorrências</h3>
+                        <p class="stat-value" id="cardTotal">0</p>
+                        <span class="stat-label">Registradas no sistema</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-content">
+                        <h3>Ocorrências no Período</h3>
+                        <p class="stat-value" id="cardPeriod">0</p>
+                        <span class="stat-label">Conforme filtros aplicados</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-content">
+                        <h3>Tipo Mais Recorrente</h3>
+                        <p class="stat-value" id="cardTopType">—</p>
+                        <span class="stat-label">No período selecionado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de Barras -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h2>Ocorrências por Mês</h2>
+                    <button id="generatePdfBtn" class="btn-pdf">📄 Gerar Relatório PDF</button>
+                </div>
+                
+                <div id="chart" class="chart-container">
+                    <div class="chart-y-axis">
+                        <span class="y-label">Quantidade</span>
+                    </div>
+                    <div id="chartBars" class="chart-bars">
+                        <!-- Barras renderizadas via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção para impressão (oculta) -->
+            <div id="printSection" class="print-only">
+                <div class="print-header">
+                    <h1>Relatório ĨBÁ — Dashboard</h1>
+                    <p class="print-date">Data de geração: <span id="printGenDate"></span></p>
+                </div>
+                
+                <div class="print-filters">
+                    <h2>Filtros Aplicados</h2>
+                    <p><strong>Período:</strong> <span id="printPeriodText"></span></p>
+                    <p><strong>Tipo:</strong> <span id="printTypeText"></span></p>
+                </div>
+
+                <div class="print-stats">
+                    <h2>Estatísticas</h2>
+                    <table>
+                        <tr>
+                            <td><strong>Total de Ocorrências:</strong></td>
+                            <td id="printTotal"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ocorrências no Período:</strong></td>
+                            <td id="printPeriodValue"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo Mais Recorrente:</strong></td>
+                            <td id="printTopType"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="print-chart">
+                    <h2>Ocorrências por Mês</h2>
+                    <table id="printMonthTable">
+                        <!-- Preenchido via JS -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p> © Desenvolvido por <a class="footer" target="_blank" href="https://www.linkedin.com/in/ana-teixeira-bb072625b/">Ana Teixeira</a> | 2026</p>
+    </footer>
+    <script src="js/api.js"></script>
+    <script src="dashboardjs.js"></script>
+</body>
+</html>

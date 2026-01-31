@@ -1,0 +1,588 @@
+@charset "UTF-8";
+
+:root{
+    --verde: #8A8635;
+    --verdeclarinho: #8a8635a1;
+    --vinho: #6F1F1B;
+    --branco: #ffffff;
+    --terracota: #CD883A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(img/f469c4ccf6ce999c2f7a46da5304b4f3.jpg);
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Bandeira mais suave */
+.brasil-background {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    max-width: 500px;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main sem flex centralizado */
+main {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    margin: 0;
+    min-height: auto;
+}
+
+/* Header */
+#topo {
+    background-color: var(--verde);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    gap: 24px;
+    max-height: 200px;
+    position: relative;
+    z-index: 10;
+    margin: 0;
+}
+
+#logotipo-iba {
+    display: block;
+    max-width: 100px;
+}
+
+nav {
+    background-color: var(--verde);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links > a {
+    font-weight: 600;
+    padding: 15px;
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.nav-links > a:hover {
+    background-color: var(--terracota);
+    border-radius: 5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+    opacity: 1;
+    pointer-events: auto;
+    border: 0;
+    box-shadow: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--branco);
+}
+
+footer {
+    background-color: var(--verde);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer {
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.footer:hover {
+    padding: 4px;
+    background-color: var(--vinho);
+    border-radius: 5px;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    color: var(--vinho);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header .subtitle {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Filtros Dashboard - MAIS ESPAÇADOS */
+.filtros-dashboard {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 1.5rem; /* AUMENTADO */
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.filtro-item {
+    flex: 1;
+    min-width: 200px; /* AUMENTADO */
+}
+
+.filtro-item label {
+    display: block;
+    font-weight: 600;
+    color: var(--vinho);
+    margin-bottom: 0.75rem; /* AUMENTADO */
+    font-size: 0.9rem;
+}
+
+.filtro-item input,
+.filtro-item select {
+    width: 100%;
+    padding: 0.85rem; /* AUMENTADO */
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.filtro-item input:focus,
+.filtro-item select:focus {
+    outline: none;
+    border-color: var(--verde);
+}
+
+.btn-aplicar-dashboard {
+    padding: 0.85rem 2.5rem; /* AUMENTADO */
+    background: var(--vinho);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.btn-aplicar-dashboard:hover {
+    background: var(--terracota);
+}
+
+/* Cards de Estatísticas */
+.cards-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    border-radius: 12px;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-content h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--vinho);
+    margin: 0.25rem 0;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Gráfico */
+.chart-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.chart-header h2 {
+    font-size: 1.5rem;
+    color: var(--vinho);
+    margin: 0;
+}
+
+.btn-pdf {
+    padding: 0.75rem 1.5rem;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.btn-pdf:hover {
+    background: var(--vinho);
+}
+
+.chart-container {
+    display: flex;
+    gap: 1rem;
+    min-height: 300px;
+    position: relative;
+}
+
+.chart-y-axis {
+    display: flex;
+    align-items: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: #666;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.chart-bars {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 0.5rem;
+    border-left: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding: 1rem 0.5rem 0.5rem;
+    position: relative;
+}
+
+.bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 40px;
+    max-width: 80px;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(to top, var(--vinho), var(--terracota));
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s;
+    position: relative;
+    min-height: 4px;
+}
+
+.bar:hover {
+    opacity: 0.8;
+    transform: scaleY(1.02);
+}
+
+.bar-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.bar-label {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 600;
+    text-align: center;
+}
+
+.chart-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 200px;
+    color: #999;
+    font-size: 1rem;
+}
+
+/* Impressão */
+.print-only {
+    display: none;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    #printSection,
+    #printSection * {
+        visibility: visible;
+    }
+    
+    #printSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: block !important;
+        background: white;
+        padding: 2rem;
+    }
+    
+    .print-header h1 {
+        color: #6F1F1B;
+        margin-bottom: 0.5rem;
+    }
+    
+    .print-date {
+        color: #666;
+        margin-bottom: 2rem;
+    }
+    
+    .print-filters,
+    .print-stats,
+    .print-chart {
+        margin-bottom: 2rem;
+    }
+    
+    .print-filters h2,
+    .print-stats h2,
+    .print-chart h2 {
+        color: #6F1F1B;
+        border-bottom: 2px solid #8A8635;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .print-stats table,
+    .print-chart table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .print-stats table td,
+    .print-chart table th,
+    .print-chart table td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+    }
+    
+    .print-chart table th {
+        background: #f9f9f9;
+        font-weight: 600;
+        text-align: left;
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+        margin: 0;
+    }
+    
+    .filtros-dashboard {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .filtro-item {
+        width: 100%;
+    }
+    
+    .btn-aplicar-dashboard {
+        width: 100%;
+    }
+    
+    .cards-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn-pdf {
+        width: 100%;
+    }
+    
+    .chart-bars {
+        gap: 0.25rem;
+    }
+    
+    .bar-wrapper {
+        min-width: 30px;
+    }
+    
+    .bar-label {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 568px) {
+    main {
+        padding: 0.5rem;
+        min-height: auto;
+    }
+    
+    .brasil-background {
+        width: 90%;
+        opacity: 0.20;
+        top: 67%;
+        left: 50%;
+    }
+    
+    #topo {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        padding-right: 24px;
+    }
+    
+    #logo-area {
+        height: 100px;
+    }
+
+    #logotipo-iba {
+        height: 100px;
+    }
+
+    .right-area {
+        margin-left: auto;
+    }
+    
+    .menu-toggle {
+        display: block;
+        color: var(--branco);
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: 12px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: 240px;
+        padding: 16px;
+        background: var(--verde);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.4);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height .25s ease, opacity .2s ease;
+    }
+
+    .nav-links.is-open {
+        max-height: 420px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .dashboard-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 569px) {
+    .brasil-background {
+        width: 75%;
+        opacity: 0.25;
+    }
+}

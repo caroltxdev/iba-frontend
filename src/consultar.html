@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="consultar.css">
+    <title>Consultar</title>
+</head>
+<body>
+    <!-- 🔧 BANDEIRA FORA DO CONTAINER -->
+    <img src="img/974904a629ce4fb7ad1d52126a4b5ae9-removebg-preview.png" alt="#" class="brasil-background">
+    
+    <!-- 🔧 HEADER FORA DO CONTAINER -->
+    <header id="topo">
+        <div id="logo-area">
+            <img id="logotipo-iba" src="img/Ĩbá.png" alt="logotipo-iba">
+        </div>
+
+        <div class="right-area">
+            <button class="menu-toggle" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+                ☰
+            </button>
+        </div>
+
+        <nav>
+            <div class="nav-links" id="menu">
+                <a href="registrar.html">Registrar</a>
+                <a href="consultar.html">Consultar</a>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="consultar-container">
+            <div class="consultar-header">
+                <h1>Consultar Ocorrências</h1>
+                <p class="subtitle">Filtre e visualize os registros de proteção territorial</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filtros-box">
+                <div class="filtro-item">
+                    <label for="filtro-tipo">Tipo de Ocorrência</label>
+                    <select id="filtro-tipo">
+                        <option value="">Todos os tipos</option>
+                        <option value="QUEIMADA">QUEIMADA</option>
+                        <option value="DESMATAMENTO">DESMATAMENTO</option>
+                        <option value="POLUICAO">POLUIÇÃO</option>
+                        <option value="GARIMPO">GARIMPO</option>
+                        <option value="INVASAO">INVASÃO</option>
+                        <option value="OUTROS">OUTROS</option>
+                    </select>
+                </div>
+
+                <div class="filtro-item">
+                    <label for="filtro-periodo">Período</label>
+                    <select id="filtro-periodo">
+                        <option value="7">Últimos 7 dias</option>
+                        <option value="15">Últimos 15 dias</option>
+                        <option value="30" selected>Últimos 30 dias</option>
+                        <option value="90">Últimos 90 dias</option>
+                        <option value="0">Todo o período</option>
+                    </select>
+                </div>
+
+                <button id="btn-aplicar-filtros" class="btn-aplicar">Aplicar Filtros</button>
+            </div>
+
+            <!-- Contador de resultados -->
+            <div class="contador-resultados">
+                <span id="contador-texto">Carregando...</span>
+            </div>
+
+            <!-- Grid: Lista + Detalhes -->
+            <div class="consultar-grid">
+                <!-- Lista de Ocorrências -->
+                <div class="lista-ocorrencias">
+                    <div id="lista-container">
+                        <!-- Preenchido via JS -->
+                    </div>
+                </div>
+
+                <!-- Painel de Detalhes -->
+                <div class="painel-detalhes">
+                    <div id="detalhes-container">
+                        <div class="detalhes-vazio">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <p>Selecione uma ocorrência para ver os detalhes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p> © Desenvolvido por <a class="footer" target="_blank" href="https://www.linkedin.com/in/ana-teixeira-bb072625b/">Ana Teixeira</a> | 2026</p>
+    </footer>
+    <script src="js/api.js"></script>
+    <script src="consultarjs.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,569 @@
+@charset "UTF-8";
+:root{
+    --verde: #8A8635;
+    --verdeclarinho: #8a8635a1;
+    --vinho: #6F1F1B;
+    --branco: #ffffff;
+    --terracota: #CD883A;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-image: url(img/f469c4ccf6ce999c2f7a46da5304b4f3.jpg);
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Container principal com posição relativa */
+.container{
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 🔧 BANDEIRA MAIS APAGADA */
+.brasil-background{
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    max-width: 500px;
+    opacity: 0.25; /* ANTES: 0.70 → AGORA: 0.25 (bem mais suave) */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 🔧 MAIN SEM FLEX CENTRALIZADO - CONTEÚDO NO TOPO */
+main{
+    position: relative; /* Adiciona context para z-index */
+    z-index: 1; /* Fica acima da bandeira */
+    padding: 20px;
+    min-height: calc(100vh - 200px);
+    /* REMOVIDO: display: flex, justify-content, align-items */
+}
+
+#topo{
+    background-color: var(--verde);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    gap: 24px;
+    max-height: 200px;
+    position: relative; /* Garante que fica acima da bandeira */
+    z-index: 10;
+}
+
+#logotipo-iba{
+    display: block;
+    max-width: 100px;
+}
+
+nav{
+    background-color: var(--verde);
+    display: flex;
+    justify-content: flex-end;
+}
+.nav-links > a{
+    font-weight: 600;
+    padding: 15px;
+    text-decoration: none;
+    color: var(--branco);
+}
+.nav-links > a:hover{
+    background-color: var(--terracota);
+    border-radius: 5px;
+}
+
+/* DESKTOP: menu normal */
+.nav-links{
+  display:flex;
+  gap:28px;
+  position: static;
+  flex-direction: row;
+  width: auto;
+  padding: 0;
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
+  pointer-events: auto;
+  border: 0;
+  box-shadow: none;
+}
+
+/* botão escondido no desktop */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:0;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  color: var(--branco);
+}
+
+footer{
+    background-color: var(--verde);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+.footer{
+    text-decoration: none;
+    color: var(--branco);
+}
+.footer:hover{
+    padding: 4px;
+    background-color: var(--vinho);
+    border-radius: 5px;
+}
+
+button {
+    padding: 15px;
+    margin: 20px;
+    margin-left: auto;
+    display: block;
+    background-color: var(--vinho);
+    color: var(--branco);
+    border-radius: 8px;
+    border: 0px;
+    box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.3);
+}
+button:hover {
+    background-color: var(--terracota);
+    border: 0px;
+    padding: 14px;
+}
+
+/* 🔧 MÓDULO CONSULTA COM FUNDO BRANCO E Z-INDEX */
+.consultar-container {
+  position: relative;
+  z-index: 2; /* Acima da bandeira */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.95); /* Fundo branco semi-transparente */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.consultar-header {
+  margin-bottom: 2rem;
+}
+
+.consultar-header h1 {
+  font-size: 2rem;
+  color: var(--vinho); /* Usando a cor do tema */
+  margin-bottom: 0.5rem;
+}
+
+.consultar-header .subtitle {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Filtros */
+.filtros-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.filtro-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filtro-item label {
+  display: block;
+  font-weight: 600;
+  color: var(--vinho); /* Usando a cor do tema */
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.filtro-item select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.filtro-item select:focus {
+  outline: none;
+  border-color: var(--verde); /* Usando a cor do tema */
+}
+
+.btn-aplicar {
+  padding: 0.75rem 2rem;
+  background: var(--vinho); /* Usando a cor do tema */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1rem;
+  margin: 0; /* Remove margem extra */
+}
+
+.btn-aplicar:hover {
+  background: var(--terracota); /* Usando a cor do tema */
+}
+
+/* Contador */
+.contador-resultados {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Grid */
+.consultar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.5rem;
+  min-height: 600px;
+}
+
+/* Lista */
+.lista-ocorrencias {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 800px;
+}
+
+.ocorrencia-card {
+  padding: 1rem;
+  border: 2px solid #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ocorrencia-card:hover {
+  border-color: var(--verde);
+  box-shadow: 0 2px 6px rgba(138, 134, 53, 0.15);
+}
+
+.ocorrencia-card.active {
+  border-color: var(--verde);
+  background: #fef9f5;
+}
+
+.ocorrencia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.ocorrencia-titulo {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.badge-severidade {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-severidade.alta {
+  background: #fee;
+  color: #c00;
+}
+
+.badge-severidade.media {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-severidade.baixa {
+  background: #d4edda;
+  color: #155724;
+}
+
+.ocorrencia-info {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.ocorrencia-info span {
+  margin-right: 1rem;
+}
+
+.lista-vazia {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #999;
+}
+
+/* Painel de Detalhes */
+.painel-detalhes {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 800px;
+}
+
+.detalhes-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+  color: #999;
+}
+
+.detalhes-vazio svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.detalhes-content h2 {
+  color: var(--vinho);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--verde);
+  padding-bottom: 0.5rem;
+}
+
+.detalhes-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  padding: 0.75rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.meta-value {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.detalhes-section {
+  margin-bottom: 1.5rem;
+}
+
+.detalhes-section h3 {
+  color: var(--vinho);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.detalhes-section p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.evidencias-info {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.evidencias-info span {
+  padding: 0.5rem 1rem;
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+
+.detalhes-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.detalhes-images img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.detalhes-images img:hover {
+  transform: scale(1.05);
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.badge-status.em-analise {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-status.resolvido {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-status.pendente {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Responsivo */
+@media (max-width: 968px) {
+  .consultar-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .painel-detalhes {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .filtros-box {
+    flex-direction: column;
+  }
+  
+  .filtro-item {
+    width: 100%;
+  }
+  
+  .btn-aplicar {
+    width: 100%;
+  }
+  
+  .detalhes-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 568px){
+    main{
+        padding: 10px;
+        min-height: auto;
+    }
+    
+    /* 🔧 Bandeira mais apagada no mobile também */
+    .brasil-background {
+        width: 90%;
+        opacity: 0.20; /* Ainda mais suave no mobile */
+        top: 67%;
+        left: 50%;
+    }
+    
+    #top{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        padding-right: 24px;
+    }
+    
+    #logo-area{
+        height: 100px;
+    }
+
+    #logotipo-iba{
+        height: 100px;
+    }
+
+    .right-area{
+        margin-left: auto;
+    }
+    
+    .menu-toggle{
+        display: block;
+        color: var(--branco);
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .nav-links{
+        position: fixed;
+        top: 70px;
+        right: 12px;
+        z-index: 9999;
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+        width: 240px;
+        padding:16px;
+        background: var(--verde);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.4);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition: max-height .25s ease, opacity .2s ease;
+    }
+
+    .nav-links.is-open{
+        max-height: 420px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    /* Container do módulo no mobile */
+    .consultar-container {
+        padding: 1rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 569px) {
+    .brasil-background {
+        width: 75%;
+        opacity: 0.25; /* Mais suave no tablet também */
+    }
+}

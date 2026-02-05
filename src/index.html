@@ -1,16 +1,89 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ĨBÁ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registrar.css">
+    <title>Registar</title>
 </head>
 <body>
-  <h1>ĨBÁ</h1>
-  <ul>
-    <li><a href="/src/registrar.html">Registrar ocorrência</a></li>
-    <li><a href="/src/consultar.html">Consultar</a></li>
-    <li><a href="/src/dashboard.html">Dashboard</a></li>
-  </ul>
+    <div class="container">
+        <img src="img/974904a629ce4fb7ad1d52126a4b5ae9-removebg-preview.png" alt="#" class="brasil-background">
+        <header id="topo">
+            <div id="logo-area">
+                    <img id="logotipo-iba" src="img/Ĩbá.png" alt="logotipo-iba">
+            </div>
+             <div class="right-area">
+                 <button class="menu-toggle" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+                         ☰
+                         </button>
+             </div>
+            <nav>
+            <div class="nav-links" id="menu">
+                <a href="#">Registar</a>
+                <a href="consultar.html">Consultar</a>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+        </nav>
+        </header>
+
+        <h1 id="aviso"> ⚠️ O ĨBÁ não subtitui órgãos oficiais de comunicação, denúncia ou fiscalização ambiental.</h1>
+
+        <main>
+            <section class="card-denuncia">
+                
+                <form>
+
+                <fieldset class="denuncia">
+                    <legend class="denuncia-1">Dados da denúncia</legend>
+                    <div class="tipodedenuncia">
+                    <label class="label-tipo" for="tipo">Tipo de denúncia*</label>
+                    <select id="tipo" name="tipo">
+                        <option value="#">---Selecione uma opção---</option>
+                        <option value="QUEIMADA">QUEIMADA</option>
+                        <option value="DESMATAMENTO">DESMATAMENTO</option>
+                        <option value="POLUICAO">POLUIÇÃO</option>
+                        <option value="GARIMPO">GARIMPO</option>
+                        <option value="INVASAO">INVASÃO</option>
+                        <option value="OUTROS">OUTROS</option>
+                    </select>
+                    </div>
+                    <div class="data">
+                    <label class="label-data" for="data">Data*</label>
+                    <input id="data" name="data" type="date">
+                    </div>
+                    <div class="descricao">
+                    <label class="label-desc" for="desc">Descrição breve*</label>
+                    <textarea id="desc" name="desc">Escreva aqui</textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset class="anexo">
+                    <legend class="anexo-1">Anexos</legend>
+                    <div class="field">
+                    <label class="label-foto" for="foto">Foto (opcional)</label>
+                    <input id="foto" name="foto" type="file" accept="image/*">
+                    </div>
+                </fieldset>
+
+                <fieldset class="localizacao">
+                    <legend class="localizacao-1">Localização</legend>
+                    <div class="field">
+                    <label class="label-mapa" for="mapa">Mapa*</label>
+                    <div id="mapa" style="width: 100%; height: 400px;"></div>
+                </fieldset>
+
+                </form>
+
+                <button class="novaOcorrencia">+ NOVA OCORRÊNCIA</button>
+            </section>
+        </main>
+        <footer>
+            <p> © Desenvolvido por <a class="footer" target="_blank" href="https://www.linkedin.com/in/ana-teixeira-bb072625b/">Ana Teixeira</a> | 2026</p>
+        </footer>
+        <script src="js/api.js"></script>
+        <script src="registrarjs.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDPJlw9l2TYsEb5DWGydZT3eg8h29CMYY&callback=initMap" async defer></script>
+    </div>
 </body>
 </html>

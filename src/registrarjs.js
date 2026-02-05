@@ -1,23 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const btn  = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
-
-  if (!btn || !menu) return;
-
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('is-open');
-  });
-
-  menu.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') menu.classList.remove('is-open');
-  });
-});
-// registrarjs.js
+// Variáveis globais
 let map;
 let marker;
-let selectedLocation = { lat: -15.7801, lng: -47.9292 }; // Brasília como padrão
+let selectedLocation = { lat: -15.8267, lng: -47.9218 }; // Brasília como padrão
 
-// Inicializa o mapa do Google Maps
+// Função de inicialização do mapa
 function initMap() {
     map = new google.maps.Map(document.getElementById('mapa'), {
         center: selectedLocation,
@@ -47,6 +33,9 @@ function initMap() {
         marker.setPosition(selectedLocation);
     });
 }
+
+// Torna initMap global para o callback do Google Maps
+window.initMap = initMap;
 
 // Função para lidar com o envio do formulário
 async function handleSubmit(event) {
@@ -80,7 +69,7 @@ async function handleSubmit(event) {
         description: descricao,
         latitude: selectedLocation.lat,
         longitude: selectedLocation.lng,
-        photoUrl: foto ? foto.name : null // Por enquanto só o nome do arquivo
+        photoUrl: foto ? foto.name : null
     };
 
     try {
@@ -102,7 +91,7 @@ async function handleSubmit(event) {
         document.getElementById('foto').value = '';
 
         // Reseta o mapa
-        selectedLocation = { lat: -15.7801, lng: -47.9292 };
+        selectedLocation = { lat: -15.8267, lng: -47.9218 };
         marker.setPosition(selectedLocation);
         map.setCenter(selectedLocation);
 
@@ -116,24 +105,27 @@ async function handleSubmit(event) {
     }
 }
 
-// Event listener quando a página carrega
+// Event listener único quando a página carrega
 document.addEventListener('DOMContentLoaded', function() {
-    // Conecta o botão ao evento de submit
+    // Menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('is-open');
+        });
+
+        menu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                menu.classList.remove('is-open');
+            }
+        });
+    }
+
+    // Conecta o botão de submit
     const btn = document.querySelector('.novaOcorrencia');
     if (btn) {
         btn.addEventListener('click', handleSubmit);
     }
-
-    // Menu toggle (já existente)
-    const menuBtn = document.getElementById('menu-btn');
-    const menu = document.getElementById('menu');
-    
-    if (menuBtn) {
-        menuBtn.addEventListener('click', function() {
-            menu.classList.toggle('active');
-        });
-    }
 });
-
-// Carrega o Google Maps quando a página carrega
-window.initMap = initMap;

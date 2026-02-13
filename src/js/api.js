@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://iba-backend-e7ak.onrender.com';
+const API_BASE_URL = 'https://iba-backend-e7ak.onrender.com/api';
 
 async function createOccurrence(occurrenceData) {
     try {
